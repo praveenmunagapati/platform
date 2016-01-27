@@ -21,6 +21,7 @@
   "home_MainTitle": "APIKA - rajapintojen hallintajärjestelmä",
   "home_SecondaryTitle": "Rakennamme siltaa rajapintojen omistajien ja hyödyntäjien välille",
   "Dashboard": "Siirry palveluun",
+  "Frontpage": "Etusivulle",
   "latestApiBackends_Heading": "Uusimmat rajapinnat",
   "latestApiBackends_DateAdded": "Lisätty %s",
   "latestApiBackends_MoreInfo": "Lisää tietoa",

@@ -1,6 +1,6 @@
 <template name="navbar">
   <header class="main-header">
-    <a href="/" class="logo">
+    <a href="{{pathFor 'dashboard'}}" class="logo">
       {{#if projectLogo}}
       <div class="logo-lg project-logo" style="background-image: url('{{ projectLogo.url }}')"></div>
       <span class="logo-mini"><b>{{ branding.siteAbbreviation }}</b></span>
@@ -30,8 +30,8 @@
           <!-- /language select -->
           {{#if User}}
           <li>
-            <a href="{{pathFor 'dashboard'}}">
-              {{_ "Dashboard"}}
+            <a href="{{pathFor 'home'}}">
+              {{_ "Frontpage"}}
             </a>
           </li>
           {{> userMenu }}
