@@ -18,7 +18,7 @@ Template.profile.rendered = function () {
   }
 
   // initializes button
-  var copyButton = $("<a class=\"btn btn-default btn-xs\" id=\"copyApi\"> Copy API to clipboard</a>");
+  var copyButton = $("<a class=\"btn btn-default btn-xs\" id=\"copyApi\"> Copy API key to clipboard</a>");
 
   // get input field that holds api key
   var apiKeyField = $("input[name='profile.apiKey']");
