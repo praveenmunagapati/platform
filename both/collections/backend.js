@@ -1,3 +1,5 @@
+import ss from 'simple-statistics';
+
 ApiBackends = new Mongo.Collection('apiBackends');
 
 // RegEx constants
@@ -28,6 +30,10 @@ Schemas.ApiBackendsSchema = new SimpleSchema({
   name: {
     type: String,
     optional: false
+  },
+  documentationFileId: {
+    type: String,
+    optional: true
   },
   documentation_link: {
     type: String,
