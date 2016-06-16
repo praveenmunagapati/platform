@@ -1,5 +1,7 @@
 [![Gitter](https://img.shields.io/badge/GITTER-JOIN_CHAT_%E2%86%92-1dce73.svg)](https://gitter.im/apinf/public)
 
+[![Build Status](https://travis-ci.org/apinf/api-umbrella-dashboard.svg?branch=feature%2F631-nightly-deployment)](https://travis-ci.org/apinf/api-umbrella-dashboard) [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/apinf/api-umbrella-dashboard/develop/LICENSE) [![Docs Status](https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat)](http://apinf.org/docs/)
+
 # Links
 - [Documentation](http://apinf.org/docs) - APInf documentation
 - [Discussion](http://community.apinf.io) - APInf discussion
@@ -35,7 +37,8 @@ For the ecosystem, we will concentrate on open APIs in the MVP phase. For the AP
 1. Install [API Umbrella](http://apiumbrella.io/download/) (or follow the [Developer Setup](http://apiumbrella.io/docs/development-setup/))
 2. Install [Meteor.js](https://www.meteor.com/install)
 3. Clone [Apinf](https://github.com/apinf/api-umbrella-dashboard)
-4. Type `meteor` in the project directory
+4. Run `npm install`
+5. Type `meteor` in the project directory
 
 ## With Docker
 
@@ -74,4 +77,4 @@ You can preview our latest version at [nightly.apinf.io](http://nightly.apinf.io
 * password: testuser
 
 # Contributing
-Please review our [Contributor Guid](https://github.com/apinf/docs/blob/master/docs/develop/contributing.md) for details on how to get involved with the project.
+Please review our [Contributor Guide](https://github.com/apinf/docs/blob/master/docs/develop/contributing.md) for details on how to get involved with the project.
