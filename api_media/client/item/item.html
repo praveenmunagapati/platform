@@ -13,11 +13,12 @@
         {{ post.url }}
       </a>
       <br>
-      {{_ "apiMedia_PostItem_Added_Text"}}
-      <span id="apiMediaCreationTime" title='{{ localeFormatDate post.createdAt }}'>
-        {{  dateInTimeAgoFormat post.createdAt }}
-      </span>
-
+      <p>
+        {{_ "apiMedia_PostItem_Added_Text"}}
+        <span id="apiMediaCreationTime" title='{{ localeFormatDate post.createdAt }}'>
+          {{  dateInTimeAgoFormat post.createdAt }}
+        </span>
+      </p>
       <p class="pull-right">
         {{#if api.currentUserCanEdit }}
           <button class="edit btn btn-default">{{_ "apiMedia_PostItem_Edit_Button"}}</button>
