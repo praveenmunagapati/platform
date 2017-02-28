@@ -5,6 +5,16 @@ html, body, h1, h2, h3, h4, h5, h6, p {
   font-family: @font-family-default;
 }
 
+@media only screen
+       and (max-device-width : 480px) {
+  h1, h2, h3, h4, h5, p {
+    font-size: 200% !important;
+  }
+  button {
+    font-size: 150% !important;
+  }
+}
+
 a:hover, a:focus {
   color: @link-hover-color;
   text-decoration: underline;
