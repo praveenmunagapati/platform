@@ -11,6 +11,14 @@ import { TAPi18n } from 'meteor/tap:i18n';
 import Branding from './';
 
 Branding.schema = new SimpleSchema({
+  analyticsSettings: {
+    type: Object,
+    optional: true,
+  },
+  'analyticsSettings.google': {
+    type: String,
+    optional: true,
+  },
   projectLogoFileId: {
     type: String,
     optional: true,
