@@ -10,7 +10,7 @@
 This is a set of guidelines every developer should follow before starting their
 "work day". To start with, the following two:
 
-* Rebase your work against latest develop `git rebase`
+* Rebase your work against latest develop `git rebase`, see #2524
 * Go through any open PRs assigned to you and clear them off your desk
 
 ## Commit guidelines
