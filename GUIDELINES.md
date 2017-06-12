@@ -43,6 +43,7 @@ _hotfix_ to the relevant branches they are intended for. __Get in habit of using
 
 ## General workflow
 
+* `develop` is our staging area and `master` is our stable codebase.
 * All __features__ are developed in __feature__ branches. Naming convention should
 be either _`feature/<name or github id> OR feature-<name or github id>`_.
 * All __bugfixes__ are done in __bugfix__ branches. Naming convention is 
