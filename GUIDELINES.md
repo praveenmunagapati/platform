@@ -4,6 +4,7 @@
 * General workflow
 * Merege / PR guidelines
 * Releasing guidelines
+* Continuos Integration process
 * Testing and automation guidelines
 
 ## Daily TODOs
@@ -63,3 +64,33 @@ following have passed:
     * __Gate 3__
     * Peer review
     * Automated test case for the scenario
+
+### Bugfix vs Hotfix
+A _bugfix_ means fixing a broken piece of code or functionality in the current release
+candidate while a _hotfix_ means patching any existing release for a broken
+functionality or a vulnerability fix.
+
+### Definition of the Gates
+
+#### Gate 1
+Runs on every commit that will eventually be a part of `develop`. Items that are a
+part of this gate are:
+* Unit tests
+* Localization tokens check
+* Coding style check using `eslint`
+* Sandbox setup and testing of following scenarios (BASIC INTEGRATION TESTS):
+    * Add, view API
+    * Add, show API catalog
+    * Add, show Organiation
+    * Add, show User
+    * User login
+    * Proxy setup and make at least 1 call using this proxy
+Expeected time to complete this test set should not be 5-7 minutes.
+
+#### Gate 2
+Runs every night on the latest code from `develop`. Items that are a part of this
+gate are:
+    * Sandbox setup
+    * Tests from _Gate 1_
+    * Regression testing
+    * Broad variety and complexity of E2E tests
