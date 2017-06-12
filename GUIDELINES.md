@@ -35,6 +35,10 @@ linux kernel
 The sole purpose of the __merge commits__ are to merge the _feature_, _bugfix_ or
 _hotfix_ to the relevant branches they are intended for. __Get in habit of using
 `git rebase`__.
+* Using keywords in commits (self explanatory):
+    * NEW
+    * FIXES
+    * IMPROVES
 
 ## General workflow
 
