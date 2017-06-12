@@ -15,9 +15,12 @@ This is a set of guidelines every developer should follow before starting their
 
 ## Commit guidelines
 
+* No force push to `develop`, `release`, `master`.
+* Check incoming before pushing an outgoing commit (e.g. use `git pull --rebase`).
 * Try to have nuclear commits and at the same time, all connected items should
 be a part of the same commit. The idea is that any commit that has been pushed
-to the upstream, should be independent and yet a complete changeset.
+to the upstream, should be independent and yet a complete changeset and should
+be easy to `git bisect` or `git revert` in case of regression.
 * Verbose and informative messages, as a thumb rule, please go through the
 following points from https://chris.beams.io/posts/git-commit/
     * Separate subject from the body with a blank line
@@ -27,10 +30,8 @@ following points from https://chris.beams.io/posts/git-commit/
     * Wrap the body at 72 characters
     * Use the body to explain _what_ and _why_ vs _how_
     * Use an imperative mood in the subject line
-* A good resource to see ideal commit examples would be the `git log` for the
-linux kernel
-* Check incoming before pushing an outgoing commit.
-* No force push to `develop`, `release`, `master`.
+* A good resource to see ideal commit message examples would be the `git log` for
+the linux kernel project.
 * No merge commits in any _feature branch_ or _bugfix branch_ or _hotfix branch_.
 The sole purpose of the __merge commits__ are to merge the _feature_, _bugfix_ or
 _hotfix_ to the relevant branches they are intended for. __Get in habit of using
