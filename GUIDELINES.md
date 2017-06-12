@@ -2,10 +2,9 @@
 * Daily TODOs
 * Commit guidelines
 * General workflow
-* Merege / PR guidelines
+* Merge / PR guidelines
 * Releasing guidelines
-* Continuos Integration process
-* Testing and automation guidelines
+* Continuos Integration process and testing
 
 ## Daily TODOs
 This is a set of guidelines every developer should follow before starting their
@@ -85,12 +84,62 @@ part of this gate are:
     * Add, show User
     * User login
     * Proxy setup and make at least 1 call using this proxy
-Expeected time to complete this test set should not be 5-7 minutes.
+
+Expeected time to complete this test set should not be 5-7 minutes. __Automation
+coverage: 100%.__
+
+After completion of this step, the code under review (through PR) will be merged
+to `develop`.
 
 #### Gate 2
 Runs every night on the latest code from `develop`. Items that are a part of this
 gate are:
-    * Sandbox setup
-    * Tests from _Gate 1_
-    * Regression testing
-    * Broad variety and complexity of E2E tests
+* Sandbox setup
+* Tests from _Gate 1_
+* Regression test suite
+* Broad variety and complexity of E2E test suite
+
+__Automation coverage: 100%__
+
+After completion of this step:
+* The code will be deployed to: `nightly.apinf.io`.
+* TBD: A `beta-release-tarball` is created
+* TBD: Commit is marked as `beta-tested`
+
+### Gate 3 : Release gate (or Pre-release tests)
+
+Runs before every release is done to the client or otherwise. All the deliveries
+of any kind should pass this gate. This step is triggered manually by the release
+manager or Product owner (See release process). Items in this gate include:
+* Tests from _Gate 1_
+* Tests from _Gate 2_
+* Integration test suite
+* Manual testing
+
+__Automation coverage: 60%__ (excludes Manual testing, selected tests in
+Integration test suite)
+
+After completion of this step:
+* Tested code is deployed to: `apinf.io` 
+* Release is finalized (See release process)
+
+## Merge / PR guidelines
+* Developer's code must be `rebased` against latest `develop`
+* 
+
+
+## Releasing guidelines
+Who takes decision about the release: _Release manager_ and/or _Product owner_.
+
+## Continuos Integration process and testing
+Until more infrastructure is available, we will use Selective CI. This means
+that, our staging area (`develop`) will be tested for every commit that lands
+into the branch. It is developers responsibility to run the __Gate 1__ tests
+before creating a PR. For more details, please check __Merge / PR guidelines__.
+
+Tools used:
+* For Continuous Integration and delivery: __Jenkins__
+* Test case writing:
+    * Unit / Functional tests: Chimp.js
+    * E2E tests (UI tests): Robot + Selenium
+
