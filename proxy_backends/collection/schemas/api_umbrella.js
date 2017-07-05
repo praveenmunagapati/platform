@@ -67,6 +67,11 @@ const SettingsSchema = new SimpleSchema({
     },
     optional: true,
   },
+  default_response_headers_string: {
+    type: String,
+    optional: true,
+    defaultValue: 'Access-Control-Allow-Origin: *',
+  },
 });
 
 // Internationalize settings schema texts
