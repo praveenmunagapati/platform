@@ -1,5 +1,7 @@
+// Meteor contributed packages imports
 import { Migrations } from 'meteor/percolate:migrations';
 
+// Collection imports
 import Apis from '/apis/collection';
 
 Migrations.add({
