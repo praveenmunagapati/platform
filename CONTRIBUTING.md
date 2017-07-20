@@ -584,6 +584,14 @@ sAlert.warning(message);
 
 ```
 
+# REST API
+
+APInf Platform has a REST API. Please refer to our [open-api spec](https://apinf.io/rest/v1/swagger.json) using a [visualizer](https://openapi.space/).
+
+## Login
+
+
+
 # Automated testing
 
 ## End to End
