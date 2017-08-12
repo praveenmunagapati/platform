@@ -6,11 +6,7 @@ https://joinup.ec.europa.eu/community/eupl/og_page/european-union-public-licence
 <template name="organizationNoFeaturedApis">
   <div class="alert alert-warning" style="display: inline-block;">
     <div class='no-apis-title'>
-      {{# if organization.currnetUSerCanManage }}
-      	{{_ 'organizationNoFeaturedApis_text_noFeaturedApis' }}
-      {{ else }}
-      	{{_ 'organizationChooseFeatureApis_text_chooseFeatureApis' }}	
-    	{{/ if }}
+      {{_ 'organizationNoFeaturedApis_text_noFeaturedApis' }}
     </div>
     {{# if organization.currentUserCanManage }}
       {{_ 'organizationNoFeaturedApis_text_useButton' }}

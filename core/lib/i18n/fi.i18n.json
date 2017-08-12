@@ -36,7 +36,6 @@
     "organizationCover_resumable_acceptedExtensions": "Tuetut tiedostomuodot: .jpg, .jpeg, .png, .gif.",
     "organizationNoFeaturedApis_text_useButton": "Voit valita rajapinnan Suositelluksi rajapinnaksi klikkaamalla nuppineulaa rajapintakortin oikeassa yl\u00e4kulmassa",
     "organizationNoFeaturedApis_text_noFeaturedApis": "T\u00e4ll\u00e4 organisaatiolla ei ole Suositeltuja rajapintoja",
-    "organizationChooseFeatureApis_text_chooseFeatureApis":"Voit käyttää organisaatiosi sovellusliittymiä liittämällä kyseisen API-kortin. Voit valita enintään neljä sovellusliittymää organisaatiosi ominaisuuksiin.",
     "organizationProfile_bigText_featuredApisCount": "Suositellut rajapinnat",
     "organizationProfileHeader_uploadCoverButton_text": "Lataa kansikuva",
     "organizationSettingsPagination_panelTitle_contentManagement": "Sis\u00e4ll\u00f6nhallinta",
