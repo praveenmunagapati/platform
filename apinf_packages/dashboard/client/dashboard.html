@@ -5,9 +5,24 @@ https://joinup.ec.europa.eu/community/eupl/og_page/european-union-public-licence
 
 <template name="dashboardPage">
   <div class="container">
-    <h1 class="page">
-      {{_ "dashboardPage_title_dashboard" }}
-    </h1>
+    <div style="display: inline-block">
+      <div style="width: 50%">
+        <h1 class="page">
+          {{_ "dashboardPage_title_dashboard" }}
+        </h1>
+      </div>
+      <div style="width: 50%">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <div class="btn btn-default input-group-addon" id="search-box">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
     {{# if Template.subscriptionsReady }}
       {{> dashboardToolbar proxiesList=proxiesList }}
