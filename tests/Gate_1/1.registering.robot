@@ -24,8 +24,8 @@ Make new account (positive)
 	Register to apinf	asdas	asd@asd.asd	asdasd
 	confirm page loaded	Users
 
-	
-*** Keywords *** 
+
+*** Keywords ***
 Go to homepage
 	Open Browser	${HOMEPAGE} 	${BROWSER}
 
@@ -48,4 +48,5 @@ confirm page loaded
 	Wait Until Page Contains 	${searchkey}
 
 Logout of apinf
+	Focus		id=footer-signout
 	Click Element 	id=footer-signout

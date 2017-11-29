@@ -13,7 +13,7 @@ APIs sorting
 	Go to api catalog
 	apis sorting
 
-*** Keywords *** 
+*** Keywords ***
 Go to homepage
 	Open Browser	${HOMEPAGE} 	${BROWSER}
 
@@ -26,16 +26,14 @@ Go to api catalog
 Apis sorting
 	Select From List By Value	id=sort-select	bookmarkCount
 	Location Should Contain	By=bookmark
-	Click Element	id=sortDirection-descending
-	Location Should Contain	Direction=descending
+	Select From List By Value	id=sort-select	name-desc
+	Location Should Contain	name-desc
 	Select From List By Value	id=sort-select	created_at
 	Location Should Contain	By=created
-	Click Element	id=sortDirection-ascending
-	Location Should Contain	Direction=ascending
+	Select From List By Value	id=sort-select	name-asc
+	Location Should Contain	name-asc
 	Select From List By Value	id=sort-select	averageRating
 	Location Should Contain	By=average
-	Select From List By Value	id=sort-select	name
-	Location Should Contain	By=name
 
 confirm page loaded
 	[Arguments] 	${searchkey}

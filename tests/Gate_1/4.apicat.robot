@@ -77,4 +77,5 @@ confirm page loaded
 	Wait Until Page Contains 	${searchkey}
 
 Logout of apinf
+	Focus		id=footer-signout
 	Click Element 	id=footer-signout
