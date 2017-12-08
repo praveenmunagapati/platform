@@ -11,11 +11,30 @@ import { sAlert } from 'meteor/juliancwirko:s-alert';
 AutoForm.hooks({
   organizationSettingsGeneral: {
     onSuccess () {
-      // Get success message translation
-      const message = TAPi18n.__('organizationSettingsGeneral_update_successMessage');
+      // Getting name from this.udateDoc
+      const orgName = this.updateDoc.$set.name;
+      if (orgName) {
+        Meteor.call('updateOrgSlug', null, orgName, (error, slug) => {
+          if (error) {
+            // Show message
+            sAlert.success(error);
+          } else if (slug && slug !== '') {
+            // Get success message translation
+            const message = TAPi18n.__('organizationSettingsGeneral_update_successMessage');
 
-      // Alert success message to user
-      sAlert.success(message);
+            // Alert success message to user
+            sAlert.success(message);
+            // Redirect to newly added organization
+            FlowRouter.go('organizationProfile', { slug: slug });
+          } else {
+            // Otherwise Redirect to Organization Catalog
+            FlowRouter.go('organizations');
+          }
+        });
+      } else {
+        // Otherwise Redirect to Organization Catalog
+        FlowRouter.go('organizations');
+      }
     },
     onError () {
       // Get failure message translation

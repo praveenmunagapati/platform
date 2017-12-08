@@ -54,6 +54,10 @@ new Meteor.Pagination(Apis, {
 
 // eslint-disable-next-line prefer-arrow-callback
 Meteor.publishComposite('apiComposite', function (slug) {
+  if (slug === null) {
+    return false;
+  }
+
   check(slug, String);
   return {
     find () {

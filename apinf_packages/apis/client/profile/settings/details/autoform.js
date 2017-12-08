@@ -4,6 +4,9 @@ You may obtain a copy of the licence at
 https://joinup.ec.europa.eu/community/eupl/og_page/european-union-public-licence-eupl-v11 */
 
 // Meteor packages imports
+import { Meteor } from 'meteor/meteor';
+
+// Meteor packages imports
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { sAlert } from 'meteor/juliancwirko:s-alert';
@@ -11,14 +14,29 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 AutoForm.hooks({
   apiDetailsForm: {
+    before: {
+      update (api) {
+        return api;
+      },
+    },
     onSuccess () {
-      // Getting new slug from this.udateDoc
-      const slug = this.updateDoc.$set.slug;
-      if (slug) {
-      // Redirect to updated API with new slug.
-      // It is use while api's name will update slug have to change
-      // that's mean routing change
-        FlowRouter.go('viewApi', { slug });
+      // Getting name from this.udateDoc
+      const apiName = this.updateDoc.$set.name;
+
+      if (apiName) {
+        Meteor.call('updateSlug', null, apiName, (error, slug) => {
+          if (error) {
+            // Show message
+            sAlert.success(error);
+            FlowRouter.go('apiCatalog');
+          } else if (slug && slug !== '') {
+            // Redirect to modified api
+            FlowRouter.go('viewApi', { slug });
+          } else {
+            // Otherwise Redirect to API Catalog
+            FlowRouter.go('apiCatalog');
+          }
+        });
       } else {
         // Otherwise Redirect to API Catalog
         FlowRouter.go('apiCatalog');

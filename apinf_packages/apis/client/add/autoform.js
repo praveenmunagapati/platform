@@ -10,9 +10,7 @@ import { Meteor } from 'meteor/meteor';
 import { AutoForm } from 'meteor/aldeed:autoform';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Roles } from 'meteor/alanning:roles';
-
-// Collection imports
-import Apis from '/apinf_packages/apis/collection';
+import { sAlert } from 'meteor/juliancwirko:s-alert';
 
 AutoForm.hooks({
   addApiForm: {
@@ -32,11 +30,20 @@ AutoForm.hooks({
       },
     },
     onSuccess (formType, apiId) {
-      const api = Apis.findOne(apiId);
-      // Make sure slug exists
-      if (api && api.slug) {
-        // Redirect to newly added API
-        FlowRouter.go('viewApi', { slug: api.slug });
+      if (apiId) {
+        Meteor.call('updateSlug', apiId, null, (error, result) => {
+          if (error) {
+            // Show message
+            sAlert.success(error);
+            FlowRouter.go('apiCatalog');
+          } else if (result && result !== '') {
+            // Redirect to newly added API
+            FlowRouter.go('viewApi', { slug: result });
+          } else {
+            // Otherwise Redirect to API Catalog
+            FlowRouter.go('apiCatalog');
+          }
+        });
       } else {
         // Otherwise Redirect to API Catalog
         FlowRouter.go('apiCatalog');
