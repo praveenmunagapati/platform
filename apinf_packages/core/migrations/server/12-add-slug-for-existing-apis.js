@@ -16,7 +16,7 @@ Migrations.add({
   up () {
     Apis.find({ slug: { $exists: false } }).forEach((api) => {
       if (api.name) {
-        Meteor.call('updateSlug', null, api.name, (error) => {
+        Meteor.call('updateApisSlug', { name: api.name }, (error) => {
           if (error) {
             //  Show error messag
           }

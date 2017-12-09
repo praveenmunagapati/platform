@@ -30,31 +30,14 @@ Meteor.methods({
     // Return the API
     return api;
   },
-  updateSlug (apiId = null, name = null) {
-    let apiName = '';
-    if (apiId) {
-      // Make sure Id is a string
-      check(apiId, String);
-      const api = Apis.findOne(apiId);
-
-      // Check empty api
-      if (!api) {
-        return '';
-      }
-      apiName = api.name;
-    } else if (name) {
-      // Make sure name is a string
-      check(name, String);
-      const api = Apis.findOne({ name });
-
-      // Check empty api
-      if (!api) {
-        return '';
-      }
-      apiName = name;
-    } else {
+  updateApisSlug (query) {
+    // Make sure query is a object
+    check(query, Object);
+    const api = Apis.findOne(query);
+    if (!api) {
       return '';
     }
+    const apiName = api.name;
 
     // Transliterates non-Latin scripts
     const slug = slugs(apiName, { tone: false });

@@ -31,10 +31,10 @@ AutoForm.hooks({
     },
     onSuccess (formType, apiId) {
       if (apiId) {
-        Meteor.call('updateSlug', apiId, null, (error, result) => {
+        Meteor.call('updateApisSlug', { _id: apiId }, (error, result) => {
           if (error) {
             // Show message
-            sAlert.success(error);
+            sAlert.error(error);
             FlowRouter.go('apiCatalog');
           } else if (result && result !== '') {
             // Redirect to newly added API

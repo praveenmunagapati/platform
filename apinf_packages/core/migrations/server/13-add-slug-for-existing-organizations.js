@@ -14,9 +14,9 @@ Migrations.add({
   version: 13,
   name: 'Adds the slug field for Organizations document if it has not been created yet',
   up () {
-    Organizations.find({ slug: { $exists: false } }).forEach((org) => {
-      if (org.name) {
-        Meteor.call('updateOrgSlug', null, org.name, (error) => {
+    Organizations.find({ slug: { $exists: false } }).forEach((organization) => {
+      if (organization.name) {
+        Meteor.call('updateOrganizationSlug', { name: organization.name }, (error) => {
           if (error) {
             //  Show error messag
           }

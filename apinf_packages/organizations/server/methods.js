@@ -178,37 +178,21 @@ Meteor.methods({
 
     return userIsAdmin || userIsManager;
   },
-  updateOrgSlug (organizationId = null, name = null) {
-    let organizationName = '';
-    if (organizationId) {
-      // Make sure Id is a string
-      check(organizationId, String);
-      const org = Organizations.findOne(organizationId);
+  updateOrganizationSlug (query) {
+    // Make sure query is a object
+    check(query, Object);
+    const organization = Organizations.findOne(query);
 
-      // Check empty org
-      if (!org) {
-        return '';
-      }
-      organizationName = org.name;
-    } else if (name) {
-      // Make sure name is a string
-      check(name, String);
-      const org = Organizations.findOne({ name });
-
-      // Check empty org
-      if (!org) {
-        return '';
-      }
-      organizationName = name;
-    } else {
+    if (!organization) {
       return '';
     }
+    const organizationName = organization.name;
 
     // Transliterates non-Latin scripts
     const slug = slugs(organizationName, { tone: false });
-
+    
     // Look for existing duplicate slug beginning of the newest one
-    const existingOrg = Organizations.findOne(
+    const duplicateSlug = Organizations.findOne(
       {
         $or: [
           { 'friendlySlugs.slug.base': slug },
@@ -224,16 +208,16 @@ Meteor.methods({
     let slugBase = slug;
 
     // If duplicate slug exists
-    if (existingOrg && existingOrg.friendlySlugs) {
+    if (duplicateSlug && duplicateSlug.friendlySlugs) {
       // Set new index value
-      index = existingOrg.friendlySlugs.slug.index + 1;
+      index = duplicateSlug.friendlySlugs.slug.index + 1;
 
       // Get base slug value
-      slugBase = existingOrg.friendlySlugs.slug.base;
+      slugBase = duplicateSlug.friendlySlugs.slug.base;
 
       // Create new slug
       newSlug = `${slugBase}-${index}`;
-    } else if (existingOrg && existingOrg.slug) {
+    } else if (duplicateSlug && duplicateSlug.slug) {
       // Set new index value
       index += 1;
 

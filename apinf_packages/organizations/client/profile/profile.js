@@ -18,7 +18,6 @@ Template.organizationProfile.onCreated(function () {
 
   // Using to get updated subscription
   instance.autorun(() => {
-
     // Get the Organization slug from the route
     const organizationSlug = FlowRouter.getParam('slug');
 

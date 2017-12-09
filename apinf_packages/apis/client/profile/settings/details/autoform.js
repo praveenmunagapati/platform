@@ -24,10 +24,10 @@ AutoForm.hooks({
       const apiName = this.updateDoc.$set.name;
 
       if (apiName) {
-        Meteor.call('updateSlug', null, apiName, (error, slug) => {
+        Meteor.call('updateApisSlug', { name: apiName }, (error, slug) => {
           if (error) {
-            // Show message
-            sAlert.success(error);
+            // Show error message
+            sAlert.error(error);
             FlowRouter.go('apiCatalog');
           } else if (slug && slug !== '') {
             // Redirect to modified api

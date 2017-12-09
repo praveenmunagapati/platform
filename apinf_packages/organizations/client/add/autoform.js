@@ -42,10 +42,10 @@ AutoForm.hooks({
       // Check if form is in insert mode
       if (formType === 'insert') {
         if (organizationId) {
-          Meteor.call('updateOrgSlug', organizationId, null, (error, result) => {
+          Meteor.call('updateOrganizationSlug', { _id: organizationId }, (error, result) => {
             if (error) {
               // Show message
-              sAlert.success(error);
+              sAlert.error(error);
             } else if (result && result !== '') {
               // Redirect to newly added organization
               FlowRouter.go('organizationProfile', { slug: result });
