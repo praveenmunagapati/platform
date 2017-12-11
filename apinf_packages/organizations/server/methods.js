@@ -210,7 +210,7 @@ Meteor.methods({
     // If duplicate slug exists
     if (duplicateSlug && duplicateSlug.friendlySlugs) {
       // Return existing slug if organization name exists
-      if (organization._id ===  duplicateSlug._id
+      if (organization._id === duplicateSlug._id
         && slug === duplicateSlug.friendlySlugs.slug.base) {
         return organization.slug;
       }
