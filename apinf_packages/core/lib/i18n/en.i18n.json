@@ -105,7 +105,7 @@
   "apiDocumentation_APICall_Warning_Title": "Warning!",
   "apiDocumentation_buttonText_closeEditor": "Close editor",
   "apiDocumentation_buttonText_openEditor": "Open editor",
-  "apiDocumentation_Link_Title": "Link",
+  "apiDocumentation_Link_Title": "Links",
   "apiDocumentation_manageDocumentation_buttonText": "Manage",
   "apiDocumentation_No_Link_Manager_Message": "You can add a documentation link using Manage API feature.",
   "apiDocumentation_No_Swagger_Manager_Message": "You can add Swagger documentation using Manage API feature.",
@@ -437,7 +437,7 @@
   "manageApiDocumentationModal_CreateDocumentation_Title": "Create documentation file",
   "manageApiDocumentationModal_DeletedFile_ConfirmationMessage": "Are you sure you want to remove the documentation file?",
   "manageApiDocumentationModal_DeletedFile_Message": "Documentation file successfully deleted!",
-  "manageApiDocumentationModal_DocumentationLink_Title": "Link to external documentation resource",
+  "manageApiDocumentationModal_DocumentationLink_Title": "Links to external documentation resource",
   "manageApiDocumentationModal_FileType_Message": "Only YAML (YML) and JSON file formats are supported.",
   "manageApiDocumentationModal_LinkField_Updated_Message": "Documentation link successfully updated!",
   "manageApiDocumentationModal_SizeLimit_Message": "File size limit 10MB",
@@ -688,7 +688,7 @@
         "label": "Link to API Documentation"
       },
       "otherUrl": {
-        "label": "Link to other API Documentation"
+        "label": "Links to other API Documentation"
       },
       "submit_methods": {
         "label": "Allow try-out for following methods:"
