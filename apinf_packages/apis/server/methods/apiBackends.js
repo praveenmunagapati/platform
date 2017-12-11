@@ -60,6 +60,11 @@ Meteor.methods({
 
     // If duplicate slug exists
     if (existingApi && existingApi.friendlySlugs) {
+      // Return existing slug if organization name exists
+      if (api._id ===  existingApi._id
+        && slug === existingApi.friendlySlugs.slug.base) {
+        return api.slug;
+      }
       // Set new index value
       index = existingApi.friendlySlugs.slug.index + 1;
 

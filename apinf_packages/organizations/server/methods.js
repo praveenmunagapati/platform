@@ -190,7 +190,7 @@ Meteor.methods({
 
     // Transliterates non-Latin scripts
     const slug = slugs(organizationName, { tone: false });
-    
+
     // Look for existing duplicate slug beginning of the newest one
     const duplicateSlug = Organizations.findOne(
       {
@@ -209,6 +209,11 @@ Meteor.methods({
 
     // If duplicate slug exists
     if (duplicateSlug && duplicateSlug.friendlySlugs) {
+      // Return existing slug if organization name exists
+      if (organization._id ===  duplicateSlug._id
+        && slug === duplicateSlug.friendlySlugs.slug.base) {
+        return organization.slug;
+      }
       // Set new index value
       index = duplicateSlug.friendlySlugs.slug.index + 1;
 
