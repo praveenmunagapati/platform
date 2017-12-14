@@ -41,6 +41,7 @@ AutoForm.hooks({
         // Otherwise Redirect to API Catalog
         FlowRouter.go('apiCatalog');
       }
+
       // Get success message translation
       const message = TAPi18n.__('apiDetailsForm_text_updateInformation');
 
