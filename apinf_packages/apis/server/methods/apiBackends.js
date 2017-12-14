@@ -30,7 +30,7 @@ Meteor.methods({
     // Return the API
     return api;
   },
-  updateApisSlug (query) {
+  updateApisBySlug (query) {
     // Make sure query is a object
     check(query, Object);
     const api = Apis.findOne(query);

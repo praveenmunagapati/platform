@@ -31,7 +31,7 @@ AutoForm.hooks({
     },
     onSuccess (formType, apiId) {
       if (apiId) {
-        Meteor.call('updateApisSlug', { _id: apiId }, (error, result) => {
+        Meteor.call('updateApisBySlug', { _id: apiId }, (error, result) => {
           if (error) {
             // Show message
             sAlert.error(error);

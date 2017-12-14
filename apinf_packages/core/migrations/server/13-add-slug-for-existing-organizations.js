@@ -16,7 +16,7 @@ Migrations.add({
   up () {
     Organizations.find({ slug: { $exists: false } }).forEach((organization) => {
       if (organization.name) {
-        Meteor.call('updateOrganizationSlug', { name: organization.name }, (error) => {
+        Meteor.call('updateOrganizationBySlug', { name: organization.name }, (error) => {
           if (error) {
             //  Show error messag
           }

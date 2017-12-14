@@ -42,7 +42,7 @@ AutoForm.hooks({
       // Check if form is in insert mode
       if (formType === 'insert') {
         if (organizationId) {
-          Meteor.call('updateOrganizationSlug', { _id: organizationId }, (error, result) => {
+          Meteor.call('updateOrganizationBySlug', { _id: organizationId }, (error, result) => {
             if (error) {
               // Show message
               sAlert.error(error);

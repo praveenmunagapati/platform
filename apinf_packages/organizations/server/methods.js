@@ -178,7 +178,7 @@ Meteor.methods({
 
     return userIsAdmin || userIsManager;
   },
-  updateOrganizationSlug (query) {
+  updateOrganizationBySlug (query) {
     // Make sure query is a object
     check(query, Object);
     const organization = Organizations.findOne(query);

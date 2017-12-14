@@ -18,7 +18,7 @@ AutoForm.hooks({
       // Getting name from this.udateDoc
       const organizationName = this.updateDoc.$set.name;
       if (organizationName) {
-        Meteor.call('updateOrganizationSlug', { name: organizationName }, (error, slug) => {
+        Meteor.call('updateOrganizationBySlug', { name: organizationName }, (error, slug) => {
           if (error) {
             // Show message
             sAlert.error(error);

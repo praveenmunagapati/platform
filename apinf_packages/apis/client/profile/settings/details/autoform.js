@@ -24,7 +24,7 @@ AutoForm.hooks({
       const apiName = this.updateDoc.$set.name;
 
       if (apiName) {
-        Meteor.call('updateApisSlug', { name: apiName }, (error, slug) => {
+        Meteor.call('updateApisBySlug', { name: apiName }, (error, slug) => {
           if (error) {
             // Show error message
             sAlert.error(error);
