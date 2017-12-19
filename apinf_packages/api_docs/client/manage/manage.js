@@ -208,8 +208,13 @@ Template.manageApiDocumentationModal.events({
     const otherUrlLinks = Session.get('links');
     // get cross id
     const deleteLinkId = event.currentTarget.id;
+    if (otherUrlLinks && otherUrlLinks.otherUrl) {
     // Remove elemtn from Session
     otherUrlLinks.otherUrl.splice(deleteLinkId, 1);
     Session.set('links', otherUrlLinks );
+    } else {
+      otherUrlLinks.splice(deleteLinkId, 1);
+      Session.set('links', otherUrlLinks );
+    }
   },
 });
