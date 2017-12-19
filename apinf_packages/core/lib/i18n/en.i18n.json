@@ -435,6 +435,7 @@
   "manageApiDocumentationModal_CreateDocumentation_CancelButton": "Cancel",
   "manageApiDocumentationModal_CreateDocumentation_SaveButton": "Save",
   "manageApiDocumentationModal_CreateDocumentation_Title": "Create documentation file",
+  "manageApiDocumentationModal_CreateLinks_AddButton": "Add",
   "manageApiDocumentationModal_DeletedFile_ConfirmationMessage": "Are you sure you want to remove the documentation file?",
   "manageApiDocumentationModal_DeletedFile_Message": "Documentation file successfully deleted!",
   "manageApiDocumentationModal_DocumentationLink_Title": "Links to external documentation resource",

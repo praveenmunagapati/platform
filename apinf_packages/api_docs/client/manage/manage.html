@@ -71,7 +71,37 @@ https://joinup.ec.europa.eu/community/eupl/og_page/european-union-public-licence
               {{> showHelp 'documentation_link' }}
               {{_ "manageApiDocumentationModal_DocumentationLink_Title" }}
             </legend>
-            {{> afQuickField name='otherUrl' }}
+               <div>
+                 <fieldset class="form-group">
+                   <label for="links">
+                    {{_ "manageApiDocumentationModal_DocumentationLink_Title" }}
+                   </label>
+                   <div class="row">
+                     <div class="col-sm-6">
+                      <input id="linksField" name="links" class="form-control">
+                     </div>
+                     <div class="col-sm-6">
+                       <button type="button" class="btn btn-primary" id="addLinks">
+                        {{_ "manageApiDocumentationModal_CreateLinks_AddButton" }}
+                       </button>
+                    </div>
+                  </div>
+                   <small class="text-danger invisible" id="errorMessage">
+                    {{_ "invalidUrlMessage" }}
+                   </small>
+                 </fieldset>
+               </div>
+           {{# each otherUrls }}
+           <div id="otherUrl-link" class="otherUrl-link marg-b">            
+            <a href="{{ this }}" id="oherUrlLinks{{ @index }}">
+            {{ this }}
+            </a>
+            <span class="pull-right bg-red">
+              <i class="fa fa-times cursor"></i>
+            </span>
+          </div>
+          {{/ each }}
+          <!-- {{/ if}} -->
             <button type="submit" class="btn btn-success" id="save-documentation-link">
               {{_ "manageApiDocumentationModal_CreateDocumentation_SaveButton" }}
             </button>

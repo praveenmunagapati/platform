@@ -12,17 +12,23 @@ import { Modal } from 'meteor/peppelg:bootstrap-3-modal';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { sAlert } from 'meteor/juliancwirko:s-alert';
 
+// Collection imports
+import ApiDocs from '/apinf_packages/api_docs/collection';
+
 AutoForm.hooks({
   apiDocumentationForm: {
     before: {
       insert (doc) {
         // Get ID of uploaded file
         const fileId = Session.get('fileId');
-
         // If selected option is File and File is uploaded
         if (doc.type === 'file' && fileId) {
           // Save ID
           doc.fileId = fileId;
+        }
+
+        if (Session.get('links')) {
+          doc.otherUrl = Session.get('links');
         }
 
         // Return data
@@ -31,13 +37,12 @@ AutoForm.hooks({
       update (doc) {
         // Get ID of uploaded file
         const fileId = Session.get('fileId');
-
         // If selected option is File and File is uploaded
         if (doc.$set.type === 'file' && fileId) {
           // Save ID
           doc.$set.fileId = fileId;
         }
-
+        doc.$set.otherUrl = Session.get('links');
         // Return data
         return doc;
       },
