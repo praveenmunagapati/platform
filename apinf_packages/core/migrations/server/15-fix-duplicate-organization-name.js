@@ -15,16 +15,16 @@ Migrations.add({
   up () {
     // Get result only for duplicate organization name
     const dulplicateOrganizations = Organizations.aggregate([
-        {$group : { _id: "$name" ,  count : { $sum: 1}}},
-        {$match : { count : { $gt : 1 } }}
-      ]);
+      { $group: { _id: '$name', count: { $sum: 1 } } },
+      { $match: { count: { $gt: 1 } } },
+    ]);
 
     // Go throug each duplicate organization name
     dulplicateOrganizations.forEach((organizationData) => {
       const name = organizationData._id;
 
       // Find and update each duplicate name
-      Organizations.find({ name: name }).forEach((organization, index) => {
+      Organizations.find({ name }).forEach((organization, index) => {
         // Skip first one
         if (index > 0) {
           // Add increasing number as suffix in organization name
@@ -32,9 +32,10 @@ Migrations.add({
 
           // Update duplicated names are separated with suffix.
           Organizations.update({ _id: organization._id },
-          { $set:
-            { name: organizationName },
-          });
+            { $set:
+              { name: organizationName },
+            }
+          );
         }
       });
     });
