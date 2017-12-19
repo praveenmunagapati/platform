@@ -45,7 +45,7 @@ Template.manageApiDocumentationModal.onDestroyed(() => {
   Session.set('fileUploading', undefined);
 });
 
-Template.manageApiDocumentationModal.onRendered(function () {
+Template.manageApiDocumentationModal.onRendered(() => {
   // Fetch other Url
   const apiDocs = ApiDocs.findOne();
   if (apiDocs && apiDocs.otherUrl) {
@@ -116,9 +116,8 @@ Template.manageApiDocumentationModal.helpers({
     // Return Session
     if (Session.get('links') && Session.get('links').otherUrl) {
       return Session.get('links').otherUrl;
-    } else {
-    return Session.get('links');
     }
+    return Session.get('links');
   },
 });
 
@@ -169,7 +168,7 @@ Template.manageApiDocumentationModal.events({
       templateInstance.removeDocumentationFile(fileId);
     }
   },
-  'click #addLinks': function (event) {
+  'click #addLinks': function () {
     // Get Value from textbox
     const link = $('#linksField').val().trim();
     // Regex for https protocol
@@ -182,7 +181,7 @@ Template.manageApiDocumentationModal.events({
       const linksData = Session.get('links');
       // If data is available in Session
       if (linksData) {
-        // If links get otherUrl field in database        
+        // If links get otherUrl field in database
         if (linksData.otherUrl) {
           // set textbox value in Session array
           linksData.otherUrl.push(link);
@@ -210,11 +209,11 @@ Template.manageApiDocumentationModal.events({
     const deleteLinkId = event.currentTarget.id;
     if (otherUrlLinks && otherUrlLinks.otherUrl) {
     // Remove elemtn from Session
-    otherUrlLinks.otherUrl.splice(deleteLinkId, 1);
-    Session.set('links', otherUrlLinks );
-    } else {
+      otherUrlLinks.otherUrl.splice(deleteLinkId, 1);
+      Session.set('links',otherUrlLinks );
+    } else {  
       otherUrlLinks.splice(deleteLinkId, 1);
-      Session.set('links', otherUrlLinks );
+      Session.set('links',otherUrlLinks );
     }
   },
 });
