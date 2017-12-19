@@ -5,7 +5,6 @@ https://joinup.ec.europa.eu/community/eupl/og_page/european-union-public-licence
 
 // Meteor packages imports
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-import { TAPi18n } from 'meteor/tap:i18n';
 
 // Collection imports
 import Branding from './';
@@ -88,31 +87,28 @@ Branding.schema = new SimpleSchema({
       rows: 5,
     },
   },
-  socialMedia: {
-    type: [Object],
+  socialMediaLinks: {
+    type: Object,
     optional: true,
   },
-  'socialMedia.$.name': {
-    type: String,
-    optional: true,
-    allowedValues: ['Facebook', 'Twitter', 'Github'],
-    autoform: {
-      firstOption () {
-        return TAPi18n.__('schemas.branding.socialMedia.$.name.firstOption');
-      },
-    },
-  },
-  'socialMedia.$.url': {
+  'socialMediaLinks.facebook': {
     type: String,
     optional: true,
     regEx: SimpleSchema.RegEx.Url,
   },
-  footerCode: {
+  'socialMediaLinks.twitter': {
     type: String,
     optional: true,
-    autoform: {
-      rows: 5,
-    },
+    regEx: SimpleSchema.RegEx.Url,
+  },
+  'socialMediaLinks.github': {
+    type: String,
+    optional: true,
+    regEx: SimpleSchema.RegEx.Url,
+  },
+  analyticCode: {
+    type: String,
+    optional: true,
   },
 });
 
