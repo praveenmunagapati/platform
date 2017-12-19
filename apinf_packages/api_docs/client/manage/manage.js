@@ -210,10 +210,10 @@ Template.manageApiDocumentationModal.events({
     if (otherUrlLinks && otherUrlLinks.otherUrl) {
     // Remove elemtn from Session
       otherUrlLinks.otherUrl.splice(deleteLinkId, 1);
-      Session.set('links',otherUrlLinks );
-    } else {  
+      Session.set('links', otherUrlLinks);
+    } else {
       otherUrlLinks.splice(deleteLinkId, 1);
-      Session.set('links',otherUrlLinks );
+      Session.set('links', otherUrlLinks);
     }
   },
 });
