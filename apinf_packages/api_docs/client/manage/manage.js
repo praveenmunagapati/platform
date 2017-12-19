@@ -12,6 +12,7 @@ import { Template } from 'meteor/templating';
 import { Modal } from 'meteor/peppelg:bootstrap-3-modal';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { sAlert } from 'meteor/juliancwirko:s-alert';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 // Collection imports
 import ApiDocs from '/apinf_packages/api_docs/collection';
@@ -46,11 +47,14 @@ Template.manageApiDocumentationModal.onDestroyed(() => {
 
 Template.manageApiDocumentationModal.onRendered(function () {
   // Fetch other Url
-  const apiDocs = ApiDocs.findOne().otherUrl;
-
-  // Set Other Url in Session variable
-  Session.set('links', apiDocs);
-});  
+  const apiDocs = ApiDocs.findOne();
+  if (apiDocs && apiDocs.otherUrl) {
+    // Set Other Url in Session variable
+    Session.set('links', apiDocs);
+  } else {
+    Session.set('links', []);
+  }
+});
 
 Template.manageApiDocumentationModal.helpers({
   documentationFile () {
@@ -109,13 +113,12 @@ Template.manageApiDocumentationModal.helpers({
     return Session.get('fileUploading');
   },
   otherUrls () {
-    
+    // Return Session
+    if (Session.get('links') && Session.get('links').otherUrl) {
+      return Session.get('links').otherUrl;
+    } else {
     return Session.get('links');
-  },
-  dynamicId () {
-
-    for (let i=0; i > 5; i++) 
-      return i;
+    }
   },
 });
 
@@ -166,14 +169,12 @@ Template.manageApiDocumentationModal.events({
       templateInstance.removeDocumentationFile(fileId);
     }
   },
-  'click #addLinks': function (event, templateInstance) {
+  'click #addLinks': function (event) {
     // Get Value from textbox
     const link = $('#linksField').val().trim();
     // Regex for https protocol
-    const regex = '^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*'+
-      '(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$';
-    const pattern = new RegExp(regex);
-    const regexUrl = pattern.test(link);
+    const regex = SimpleSchema.RegEx.Url;
+    const regexUrl = regex.test(link);
     // If value is https(s)
     if (regexUrl) {
       // make error message invisible
@@ -181,9 +182,15 @@ Template.manageApiDocumentationModal.events({
       const linksData = Session.get('links');
       // If data is available in Session
       if (linksData) {
-        // set textbox value in Session array
-        linksData.push(link);
-        Session.set('links', linksData);
+        // If links get otherUrl field in database        
+        if (linksData.otherUrl) {
+          // set textbox value in Session array
+          linksData.otherUrl.push(link);
+          Session.set('links', linksData);
+        } else {
+          linksData.push(link);
+          Session.set('links', linksData);
+        }
       } else {
         // if session array is empty
         Session.set('links', [link]);
@@ -191,18 +198,18 @@ Template.manageApiDocumentationModal.events({
       // clear the text box
       $('#linksField').val('');
     } else {
-        // Hide error message 
-        $('#errorMessage').removeClass('invisible');
+        // Hide error message
+      $('#errorMessage').removeClass('invisible');
     }
   },
 
-  'click .cursor': function (event, templateInstance) {
+  'click .cursor': function (event) {
     // get links from session
     const otherUrlLinks = Session.get('links');
     // get cross id
-    const deleteLinkId  = event.currentTarget.id;
+    const deleteLinkId = event.currentTarget.id;
     // Remove elemtn from Session
-    otherUrlLinks.splice(deleteLinkId, 1);
-    Session.set('links', otherUrlLinks)    
+    otherUrlLinks.otherUrl.splice(deleteLinkId, 1);
+    Session.set('links', otherUrlLinks );
   },
 });
