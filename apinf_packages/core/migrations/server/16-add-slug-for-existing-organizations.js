@@ -8,15 +8,15 @@ import { Meteor } from 'meteor/meteor';
 
 import { Migrations } from 'meteor/percolate:migrations';
 
-import Apis from '/apinf_packages/apis/collection';
+import Organizations from '/apinf_packages/organizations/collection';
 
 Migrations.add({
-  version: 12,
-  name: 'Adds the slug field for APIs document if it has not been created yet',
+  version: 16,
+  name: 'Adds the slug field for Organizations document if it has not been created yet',
   up () {
-    Apis.find({ slug: { $exists: false } }).forEach((api) => {
-      if (api.name) {
-        Meteor.call('updateApisBySlug', { name: api.name }, (error) => {
+    Organizations.find({ slug: { $exists: false } }).forEach((organization) => {
+      if (organization.name) {
+        Meteor.call('updateOrganizationBySlug', { name: organization.name }, (error) => {
           if (error) {
             //  Show error messag
           }

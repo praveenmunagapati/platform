@@ -49,6 +49,8 @@ Organizations.schema = new SimpleSchema({
   },
   name: {
     type: String,
+    optional: false,
+    unique: true,
   },
   organizationLogoFileId: {
     type: String,
